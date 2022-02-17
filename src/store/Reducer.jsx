@@ -1,9 +1,15 @@
+import { createSlice } from "@reduxjs/toolkit";
 import ACTIONS from "./Actions";
-import { DATA_ACTIONS } from "../utils/actionHelpers";
-const Reducer = (state, action) => {
-  return action.type
-    ? ACTIONS[action.type](state, action)
-    : ACTIONS[DATA_ACTIONS.DEFAULT](state);
+
+const initialState = {
+  data: [],
+  error: null,
 };
 
-export default Reducer;
+const slice = createSlice({
+  name: "store",
+  initialState: initialState,
+  reducers: ACTIONS,
+});
+
+export default slice;
